@@ -71,7 +71,7 @@ $(document).ready(function() {
         effectiveness += .5;
       }
     } for (let x in type.damage_relations.half_damage_from) {
-      if (type.damage_relations.half_damage_from[x] != null && atkType == type.damage_relations.half_damage_from[x].name) {
+      if (atkType == type.damage_relations.half_damage_from[x].name) {
         if (effectiveness == 1.5) {
           effectiveness = 1;
         } else {
@@ -79,7 +79,7 @@ $(document).ready(function() {
         }
       }}
       for (let x in type.damage_relations.no_damage_from) {
-        if (type.damage_relations.no_damage_from[x] != null && atkType == type.damage_relations.no_damage_from[x].name) {
+        if (atkType == type.damage_relations.no_damage_from[x].name) {
         effectiveness = 0;
       }
     }
