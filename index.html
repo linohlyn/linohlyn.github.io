@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pokemon DnD Damage Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="calculator.js"></script>
+    <link rel="stylesheet" href="node_modules\pokemon-assets\assets\css\symbols.css">
+    <script>
+      $(document).ready(function(){
+        $('select').not('.disabled').formSelect();
+      });
+    </script>
+    <style>
+    .row .input-field input:focus {
+       border-bottom: 1px solid black !important;
+       box-shadow: 0 1px 0 0 black !important
+     }
+
+      ul.dropdown-content.select-dropdown li span {
+          background: #d1c4e9;
+          color: black;
+      }
+
+      body {
+        background-color: #757575;
+      }
+
+      input[type="checkbox"]:checked + span:not(.lever)::before {
+        border-bottom-color: red;
+        border-right-color: red;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container center-align">
+      <div class="row"></div>
+      <div class="row" style="color: #090A0B;">
+        <div class="col s6 deep-purple lighten-4 z-depth-2" style="padding-left: 50px; padding-right: 50px;">
+          <form>
+            <!-- Attack -->
+            <div class="row left-align" style="padding-bottom: 0; margin-bottom: 0;">
+              <h4>Attack</h4>
+            </div>
+            <div class="row valign-wrapper">
+              <div class="col s1">
+               <span class="pksymbol-wrapper"><i class=""></i></span>
+              </div>
+              <div class="input-field col s4">
+                <input type="number" id="attack" value="0">
+                <label for="attack" style="color: #090A0B;">Base Damage</label>
+              </div>
+              <!-- <div class="input-field col s6">
+                <select id="atk">
+                  <option value="special_attack">Special Attack</option>
+                  <option value="physical_attack">Physical Attack</option>
+                </select>
+                <label>Physical or Special Attack</label>
+              </div> -->
+
+              <!-- Attack Type -->
+              <div class="col s1">
+               <span class="pksymbol-wrapper"><i id="atkType" class="pksymbol pksymbol-type-normal-32px"></i></span>
+              </div>
+              <div class="input-field col s4">
+                <select id="attack_type">
+                  <option value="normal" selected>Normal</option>
+                  <option value="fire">Fire</option>
+                  <option value="water">Water</option>
+                  <option value="grass">Grass</option>
+                  <option value="electric">Electric</option>
+                  <option value="ice">Ice</option>
+                  <option value="fighting">Fighting</option>
+                  <option value="poison">Poison</option>
+                  <option value="ground">Ground</option>
+                  <option value="flying">Flying</option>
+                  <option value="psychic">Psychic</option>
+                  <option value="bug">Bug</option>
+                  <option value="rock">Rock</option>
+                  <option value="ghost">Ghost</option>
+                  <option value="dark">Dark</option>
+                  <option value="dragon">Dragon</option>
+                  <option value="steel">Steel</option>
+                  <option value="fairy">Fairy</option>
+                </select>
+                <label style="color: #090A0B;">Attack Type</label>
+              </div>
+            </div>
+
+
+            <!-- Defenses -->
+            <div class="row left-align" style="padding-bottom: 0; margin-bottom: 0;">
+              <h4>Defense</h4>
+            </div>
+
+            <div class="row valign-wrapper" style="padding-top: 0; margin-top: 0;">
+              <div class="col s1">
+               <span class="pksymbol-wrapper"><i class=""></i></span>
+              </div>
+              <div class="input-field col s4">
+                <input type="number" id="defense" value="0">
+                <label for="defense" style="color: #090A0B;">Defense</label>
+              </div>
+            <!--  <div class="input-field col s4">
+                <select id="defType">
+                  <option value="special_defense">Special Defense</option>
+                  <option value="physical_defense">Physical Defense</option>
+                </select>
+                <label>Physical or Special Defense</label>
+              </div> -->
+              <div class="col s1">
+               <span class="pksymbol-wrapper"><i class=""></i></span>
+              </div>
+              <div class="input-field col s4">
+                <input type="number" id="armorReduction" value="0">
+                <label for="armorReduction" style="color: #090A0B;">Armor Reduction</label>
+              </div>
+            </div>
+
+            <!-- Defense Type -->
+            <div class="row valign-wrapper">
+              <div class="col s1">
+               <span class="pksymbol-wrapper"><i id="def1" class="pksymbol pksymbol-type-normal-32px"></i></span>
+              </div>
+              <div class="input-field col s4">
+                <select class="" id="defType1">
+                  <option value="normal" selected>Normal</option>
+                  <option value="fire">Fire</option>
+                  <option value="water">Water</option>
+                  <option value="grass">Grass</option>
+                  <option value="electric">Electric</option>
+                  <option value="ice">Ice</option>
+                  <option value="fighting">Fighting</option>
+                  <option value="poison">Poison</option>
+                  <option value="ground">Ground</option>
+                  <option value="flying">Flying</option>
+                  <option value="psychic">Psychic</option>
+                  <option value="bug">Bug</option>
+                  <option value="rock">Rock</option>
+                  <option value="ghost">Ghost</option>
+                  <option value="dark">Dark</option>
+                  <option value="dragon">Dragon</option>
+                  <option value="steel">Steel</option>
+                  <option value="fairy">Fairy</option>
+                </select>
+                <label style="color: #090A0B;">Defense Type 1</label>
+              </div>
+              <div class="col s1">
+               <span class="pksymbol-wrapper"><i id="def2" class=""></i></span>
+              </div>
+              <div class="input-field col s4">
+                <select class="" id="defType2">
+                  <option value="none" selected>None</option>
+                  <option value="normal">Normal</option>
+                  <option value="fire">Fire</option>
+                  <option value="water">Water</option>
+                  <option value="grass">Grass</option>
+                  <option value="electric">Electric</option>
+                  <option value="ice">Ice</option>
+                  <option value="fighting">Fighting</option>
+                  <option value="poison">Poison</option>
+                  <option value="ground">Ground</option>
+                  <option value="flying">Flying</option>
+                  <option value="psychic">Psychic</option>
+                  <option value="bug">Bug</option>
+                  <option value="rock">Rock</option>
+                  <option value="ghost">Ghost</option>
+                  <option value="dark">Dark</option>
+                  <option value="dragon">Dragon</option>
+                  <option value="steel">Steel</option>
+                  <option value="fairy">Fairy</option>
+                </select>
+                <label style="color: #090A0B;">Defense Type 2</label>
+              </div>
+            </div>
+
+            <!-- Half Resistance -->
+            <div class="row">
+              <p>
+                <label>
+                  <input type="checkbox" id="halfResist" value="halfResistance">
+                  <span style="color: #090A0B;">Half Resistance</span>
+                </label>
+              </p>
+            </div>
+
+            <!-- Submit -->
+            <div class="row">
+              <div class="input-field col s8 right-align">
+                <button type="button" class="btn" id="calculate" style="background-color: #DA7182;">Calculate Damage</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      <div class="col s5 z-depth-2" style="background-color: #D7C7EE; margin-left: 80px;">
+        <div class="row">
+          <h4>Total Damage: <span id="totaldmg">0</span></h4>
+        </div>
+        <div class="row">
+          <button type="button" class="btn" id="formulaButton" style="background-color: #DA7182;">Formula</button>
+          <p id="formulaOutput">( 0 - 0 - 0 ) * 1</p>
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
